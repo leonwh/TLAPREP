@@ -1,0 +1,415 @@
+9 Exercises
+
+1. Use the .each method of Array to iterate over [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], and puts each value. 
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+arr.each { |number| puts number} arr.each { |n| puts n}
+
+
+in irb:  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+=>  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+arr = “ . check this out
+=>  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+irbmin..008> arr enter
+=>  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+irbmin..008> arr.each { |n| puts n}enter
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+	or multi lines 
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+arr.each do |number|
+puts number
+end
+
+ .each iterates through the array and prints or puts out its values
+
+2. Same as above, but only print values greater than 5 
+  arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+arr.each { |number| if number >5 puts number } wrong order
+
+ => arr.rb:2: syntax error, unexpected tIDENTIFIER, expecting keyword_then or ';' or '\n' arr.each { |number| if number >5 puts number }
+
+correct answer 
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+arr.each { |number| puts number if number > 5 } => 6, 7, 8, 9, 10
+
+or
+
+arr.each do |n|
+	if n > 5
+	puts n
+	end
+end
+made in sublime text run from iterm leon:desktop leonhemingway$ ruby arr.rb
+6
+7
+8
+9
+10
+leon:desktop leonhemingway$ 
+
+3 Now, using the same array from #2, use the .select method to extract all odd numbers into a new array. 
+ arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+new_array = arr.select { |n| n % 2 ! = 0 }
+
+irb(main):004:0> arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+irb(main):005:0> new_array = arr.select { |n| n % 2 != 0 }
+=> [1, 3, 5, 7, 9]
+irb(main):006:0> 
+
+4. Append "11" to the end of the original array. Prepend "0" to the beginning. 
+leon:~ leonhemingway$ irb
+irb(main):001:0> arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+irb(main):002:0> arr.push 11
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+irb(main):003:0> arr.push 0
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
+irb(main):004:0> arr << 0
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 0]
+irb(main):005:0> arr.unshift (0) 
+=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0]
+irb(main):008:0> 
+
+5. Get rid of "11". And append a "3" into the array
+arr.unshift (3)
+=> [3, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+irb(main):003:0> arr.shift (3) X NO X doesnt mutate the caller array
+=> [3, 1, 2]
+irb(main):004:0> arr.unshift (3)
+=> [3, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+irb(main):005:0> arr.shift (53)
+=> [3, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+irb(main):006:0> arr.shift (5)
+=> []
+
+Need to understand what arr.shift does, arr.unshift prepends a no into the array
+
+irb(main):007:0>  arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+irb(main):008:0> arr >> 3 
+NoMethodError: undefined method `>>' for [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]:Array
+	from (irb):8
+	from /usr/local/rvm/rubies/ruby-1.9.3-p547/bin/irb:12:in `<main>'
+irb(main):009:0> arr << 0
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
+irb(main):010:0> 
+ append n into arr by .unshift n or arr << n
+
+6. Remove duplicates without specifically removing any one value.  
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 3]
+irb(main):011:0> arr << 3
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 3, 3]
+irb(main):012:0> arr.uniq
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
+
+can use arr.uniq to return brand new array which removes duplication. However the array is not modified. i.e. if we perform the above .uniq method call and then call array as follows
+
+irb(main):013:0> arr
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 3, 3]
+irb(main):014:0> 
+
+The array reverts. 
+
+To modify the original array, the calling object, we need to use a method .uniq!  (bang), which mutates the caller:
+
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 3, 3]
+irb(main):014:0> arr.uniq!
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
+irb(main):015:0> arr
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
+irb(main):016:0> 
+
+7. What's the major difference between an Array and a Hash? 
+An array can contain any mixture of figures strings numbers booleans, even arrays (arrays are referenced by index). A hash can contain only key value pairs (hashes are referenced by key)
+ 
+8. Create a Hash using both Ruby syntax styles.
+ 
+hash.new = check out how to do hash.new
+hash = {:name => 'bob'} # <= old version
+hash = {name: 'bob'} # <= new version
+irb(main):002:0> hash = {name: 'bob'}
+=> {:name=>"bob"}
+irb(main):003:0> 
+
+8. Suppose you have a hash h = {a:1, b:2, c:3, d:4} 
+
+Get the value of key `:b`.
+irb(main):002:0> h[:b]
+=> 2
+irb(main):003:0> 
+
+- Add to this hash the key:value pair `{e:5}`
+
+irb(main):003:0> h[:e] = 5
+=> 5
+irb(main):004:0> h
+=> {:a=>1, :b=>2, :c=>3, :d=>4, :e=>5}
+irb(main):005:0> 
+
+- Remove all key:value pairs whose value is less than 3.5
+ h.delete_if iteration over the hash
+
+irb(main):005:0> h.delete_if { |k, v| v < 3.5 }
+=> {:d=>4, :e=>5}
+
+- Add a key:value pair whose value is greater than 6
+irb(main):006:0> h[:b] = 7
+=> 7
+irb(main):007:0> h
+=> {:d=>4, :e=>5, :b=>7}
+irb(main):008:0> 
+
+9. Can hash values be arrays? Can you have an array of hashes? (give examples) 
+
+hash values as arrays
+leon:~ leonhemingway$ irb
+irb(main):001:0> h = {names: ['bob', 'gary', 'bri']}
+=> {:names=>["bob", "gary", "bri"]}
+irb(main):002:0> hash
+=> 2990305884243834375
+irb(main):003:0> 
+
+note that when calling hash, a number was generated – find out what this is, it was the same on calling hash a second time.
+# array of hashes
+arr = [{name: 'bob'}, {name: 'joe'}, {name: 'susan'}]
+ note the pattern of brackets, square and angle. Nesting many hashes within arrays is possible but I need to find out what its purpose is – data structure/data storage notes required. Chris Lee says spotting these patterns will be critical to my success as a programmer
+10. Look at several Rails/Ruby online API sources and say which one you like best and why. 
+ruby API (ruby--.org) ROR API (rubyonrails.org); rails covers more methods than core ruby has, better to initially look at the core ruby API
+
+12 Given the following data structures. Write a program that moves the information from the array into the empty hash that applies to the correct person. Turn array into nested hash 
+
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]] nested array (2 in 1)
+
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+  
+IN IRB
+leon:~ leonhemingway$ irb
+irb(main):001:0> contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+irb(main):002:1*             ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+=> [["joe@email.com", "123 Main st.", "555-123-4567"], ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+irb(main):003:0> 
+irb(main):004:0* contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+=> {"Joe Smith"=>{}, "Sally Johnson"=>{}}
+irb(main):005:0> contacts["Joe Smith"][:email] = contact_data[0][0]
+=> "joe@email.com"
+irb(main):006:0> contacts["Joe Smith"][:address] = contact_data[0][1]
+=> "123 Main st."
+irb(main):007:0> contacts["Joe Smith"][:phone] = contact_data[0][2]
+=> "555-123-4567"
+irb(main):008:0> contacts["Sally Johnson"][:email] = contact_data[1][0]
+=> "sally@email.com"
+irb(main):009:0> contacts["Sally Johnson"][:address] = contact_data[1][1]
+=> "404 Not Found Dr."
+irb(main):010:0> contacts["Sally Johnson"][:phone] = contact_data[1][2]
+=> "123-234-3454"
+irb(main):011:0> 
+
+IN TEXT EDITOR
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]] 
+
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+
+puts contact_data[0]
+puts '-------'
+puts contact_data[1]
+
+in shell => leon:~ leonhemingway$ cd desktop
+leon:desktop leonhemingway$ ruby arr.rb
+joe@email.com
+123 Main st.
+555-123-4567
+-------
+sally@email.com
+404 Not Found Dr.
+123-234-3454
+leon:desktop leonhemingway$ 
+
+This above coding/running shows the arrays can be accessed and printed.
+
+Then need to put the info into the right place; i.e. to move array to the empty hash for each person
+starting with just
+
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]] 
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+we have an empty contacts hash, in order to reference/assign it need to use a key (for key-value) – this is a string “Joe Smith” 
+
+insert into the hash the key and value, first testing the hash contents (empty) by running in shell:
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]] 
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+
+puts contacts[“Joe Smith”]
+=> {} an empty hash – YES! We dont want to see nil at this point, shows we can access the key.
+
+So we can go ahead and put data in the hash as keys and values:
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]] 
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+
+contacts[“joe Smith”] = contact_data[0] – this will work but alters the hash into an array (WHY?)
+so we use the following data picking:
+contacts[“Joe Smith”][:email] = contact_data[0][0] 
+		key	 &	value = hash that contains the data of email
+at this point the Sally Johnson would show as a empty hash
+	
+knowing we need a key and a value for a hash, we iterate over the array, drawing out the data as to fill the new nested hash with k-v pairs
+
+contacts[“Joe Smith”][:email] = contact_data[0][0] – index position from the starting array
+then 
+puts contacts
+
+=> leon:desktop leonhemingway$ ruby arr.rb
+{"Joe Smith"=>{:email=>"joe@email.com"}, "Sally Johnson"=>{}} cool!!
+
+contacts[“Joe Smith”][:address] = contact_data[0][1] 
+contacts[“Joe Smith”][:phone] = contact_data[0][2] 
+
+contacts[“Sally Johnson”][:email] = contact_data[1][0] 
+contacts[“Sally Johnson”][:address] = contact_data[1][1] 
+contacts[“Sally Johnson”][:phone] = contact_data[1][2] 
+
+12 Using the hash you created from the previous exercise, demonstrate how you would access Joe's email and Sally's phone number?  ACCESS USING PUTS OR PRINT and STRING INTERPOLATION VIA HASHTAG {[][:]}METHOD:
+
+ puts “ blah blah blah CALL #{“HASH” [TOP LEVEL KEY][:NESTED KEY]}”
+puts “Joe Smiths email is #{contacts[“Joe Smith”][:email]}” 
+				
+puts “Sally Johnsons cell is #{contacts[“Sally Johnson”][:phone]}” Try for longer keys?
+
+13 In exercise 12, we manually set the contacts hash values one by one. Now, programmatically loop or iterate over one contacts hash from exercise 12, and populate the associated data from the contact_data array. Hint: you will probably need to iterate over ([:email, :address, :phone]), and some helpful methods might be the Array shift and first methods. Note that this exercise is only concerned with dealing with 1 entry in the contacts hash, like this:
+
+ contact_data = ["joe@email.com", "123 Main st.", "555-123-4567"]
+contacts = {"Joe Smith" => {}}
+
+1 First call fields 
+
+fields = [:email, :address, :phone]
+
+2 Then .each do |key, value | method call on the contacts hash (needs end), creates
+
+fields = [:email, :address, :phone]
+contacts.each do |name, hash|
+					← additional methods here
+end
+
+3. iterate through fields relating hash[field] to the contact_data hash with .shift to pull out each element. 1 Shift removes the element from LHS of hash, pop removes from the hash from the RHS
+
+fields.each do |field|
+    hash[field] = contact_data.shift
+  end 			Thus .each do allows each field in contact_data to be moved to the hash 
+4. Complete code
+contact_data = ["joe@email.com", "123 Main st.", "555-123-4567"]
+contacts = {"Joe Smith" => {}}
+fields = [:email, :address, :phone]
+contacts.each do |name, hash|
+  fields.each do |field|
+    hash[field] = contact_data.shift
+  end
+end
+puts contact
+
+Effectively the shift method returns the first part of the contact_data array to the appropriate hash field. Each time we .shift, we move the first element out so the original hash is getting smaller from the LHS. Neat.
+
+Exit IRB and run the code 
+leon:desktop leonhemingway$ ruby arr.rb
+{"Joe Smith"=>{:email=>"joe@email.com", :address=>"123 Main st.", :phone=>"555-123-4567"}}
+leon:desktop leonhemingway$ 
+
+ 14 As a bonus, see if you can figure out how to make it work with multiple entries in the contacts hash.  
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+fields = [:email, :address, :phone]
+
+contacts.each_with_index do |(name, hash), idx|
+  fields.each do |field|
+    hash[field] = contact_data[idx].shift
+  end
+end  					REVISIT AT A LATER DATE IN LEARNING
+ 
+15 Use Ruby's Array method delete_if and String method start_with? to delete all of the words that begin with an "s" in the following array. 
+
+arr = ['snow', 'winter', 'ice', 'slippery', 'salted roads', 'white trees']
+
+a general ruby pattern for iterating on arrays:
+arr.action { |contents of array| contents.conditions for action? }
+
+e.g arr.delete_if { |word| word.start_with? (“s”) }  or  arr.delete_if { |word| word.end_with? (“y”) }
+
+irb(main):003:0> arr.delete_if {|word| word.start_with? "s" }
+=> ["winter", "ice", "white trees"]
+ 
+irb(main):004:0> arr.delete_if { |word| word.end_with? "s", “w” }
+=> ["winter", "ice"] 						=> ["ice"]
+
+delete_if evaluates as true/false on each iteration and then acts on the method.
+
+17. Take the following array: 
+
+a = ['white snow', 'winter wonderland', 'melting ice', 'slippery sidewalk', 'salted roads', 'white trees']
+
+ and turn it into a new array that consists of strings containing one word.  (ex. ["white snow", etc...] → ["white", "snow", etc...]. 
+
+Look into using Array's .map and .flatten methods, as well as String's split method.  form a brand new array from an existing array. We can .split strings using the .split method
+
+e.g, in irb, can split string into array
+leon:~ leonhemingway$ irb
+irb(main):001:0> "asdf asdf asdfasdf".split
+=> ["asdf", "asdf", "asdfasdf"]
+
+one way of transforming all elements in an array is .map method, iterates through array FIND OUT WHAT IT DOES
+
+=> ["white snow", "winter wonderland", "melting ice", "slippery sidewalk", "salted roads", "white trees"]
+irb(main):003:0> a.map {|pairs| pairs.split}
+=> [["white", "snow"], ["winter", "wonderland"], ["melting", "ice"], ["slippery", "sidewalk"], ["salted", "roads"], ["white", "trees"]]
+
+in this instance a nested array with two strings per sub is formed, however if the array is brought up again, the caller has not been mutated. So,
+
+irb(main):004:0> a
+=> ["white snow", "winter wonderland", "melting ice", "slippery sidewalk", "salted roads", "white trees"]
+
+irb(main):006:0> a.map! {|pairs| pairs.split }
+=> [["white", "snow"], ["winter", "wonderland"], ["melting", "ice"], ["slippery", "sidewalk"], ["salted", "roads"], ["white", "trees"]]
+irb(main):007:0> a
+=> [["white", "snow"], ["winter", "wonderland"], ["melting", "ice"], ["slippery", "sidewalk"], ["salted", "roads"], ["white", "trees"]]
+
+Full code
+a = ['white snow', 'winter wonderland', 'melting ice', 'slippery sidewalk', 'salted roads', 'white trees']
+a = a.map! { |pairs| pairs.split }
+
+look up flatten and map!
+
+17 What will the following program output?
+
+ hash1 = {shoes: "nike", "hat" => "adidas", :hoodie => true}
+hash2 = {"hat" => "adidas", :shoes => "nike", hoodie: true}
+
+if hash1 == hash2
+  puts "These hashes are the same!"
+else
+  puts "These hashes are not the same!"
+end
+
+=> These hashes are the same!
+
+This tests the knowledge of hashes, the order of a hash conternts doesnt matter but in array 
+a1 = [1, 2, 3]
+b2  = [3, 2, 1]
+
+a1 == b2
+=> false
+ 
+
+

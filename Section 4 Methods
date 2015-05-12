@@ -1,0 +1,66 @@
+4.Data Structure II: Methods
+Exercises 
+1 Write a program that contains a method called greeting that takes a name as its parameter. It then prints a greeting message with the name included in it.  
+puts "What is your first name?"
+fname = gets.chomp
+def say(words='fname')
+  puts words + 'fname'
+end
+say("hi")
+say("how are you")
+say("I'm fine") DIDNT WORK< REWRITE SO NAME CAN BE ENTERED
+TLA Solution   
+def greeting(name) 
+  "Hello, " + name + ". How are you doing?"   	define the method in these three lines, def method(arguments) – body - end 
+end
+
+puts greeting("bob")   call the method via string output (without puts, get nothing)
+ => hello bob, how are you doing?
+
+2 What do the following expressions evaluate to?  i.e. what does shell create from them 
+
+1. x = 2 2
+
+2. puts x = 2 2 nil
+
+3. p name = "Joe" “Joe”
+
+4. four = "four"  "four"
+
+5. print something = "nothing" nothing => nil
+ 
+ 3 Write a program that includes a method called multiply that takes two arguments and returns the product of the two numbers.
+def multiply(x, y)
+(x) * (y)
+end
+
+puts multiply(56, 2) => 112   
+Method name and condition (x,y = starter argument)
+method body
+
+method call using numbers of our choice
+
+4 What will the following code print to the screen? 
+def scream(words)
+  words = words + "!!!!"
+  return     ← testing knowledge of this key, any code after return will not be called. Usually combine with ‘if’
+  puts words
+end
+
+scream("Yippeee") => no output – indicative of method call error around puts/print issue
+  I think this is a scope issue, can call from inside the scope but not outside
+
+i Edit the method in exercise 4 so that it does print words on the screen. Remove return
+def scream(words)
+  words = words + "!!!!"
+  puts words
+end
+
+puts scream("Yippeee")
+ii What does it return now?  yippeee!!!
+
+What does the following error message tell you? ArgumentError: wrong number of arguments (1 for 2) from (irb):1:in `calculate_product' from (irb):4 from /Users/username/.rvm/rubies/ruby-2.0.0 p353/bin/irb:12:in `<main>'
+
+I saw this when one method argument is not present/defined
+
+e.g. def multiply vs def multiply(x,y) conditional4 COMPLETE

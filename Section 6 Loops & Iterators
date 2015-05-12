@@ -1,0 +1,45 @@
+6 Data Structure IV: Loops & Iterators
+
+Exercises
+1 What does the each method in the following program return after it is finished executing? 
+
+x = [1, 2, 3, 4, 5]
+x.each do |a|
+  a + 1
+end
+irb(main):001:0> x = [1, 2, 3, 4, 5]
+=> [1, 2, 3, 4, 5]
+irb(main):002:0> x.each do |a|
+irb(main):003:1*   a + 1
+irb(main):004:1> end
+=> [1, 2, 3, 4, 5]
+
+ returns the original array, because there is no print, puts or mutation of the array when it calls .each. Every Ruby expression returns something in this instance it is an array unchanged!
+
+2  Write a while loop that takes input from the user, performs an action, and only stops when the user types "STOP". Each loop can get info from the user.
+a = ""
+while a != "shut up" do
+puts "I want a new car shall I get one"
+a = gets.chomp
+
+end
+
+3  Use the each_with_index method to iterate through an array of your creation that prints each index and value of the array. 
+arr_f = ["smurfs", "schindlers list", "evil dead", "star trek"]
+
+arr_f.each_with_index do | film, index |
+  puts "#{index + 1}. I love #{film}"
+end
+
+4 Write a method that counts down to zero using recursion. 
+
+def count_to_zero(number)
+  if number <= 0
+    puts number
+  else
+    puts number
+    count_to_zero(number-1)
+  end
+end
+
+count_to_zero(10)

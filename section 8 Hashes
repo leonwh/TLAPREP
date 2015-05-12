@@ -1,0 +1,133 @@
+7 Data Structure VI: Hashes
+
+Exercises
+1 Given a hash of family members, with keys as the title and an array of names as the values, use Ruby's built-in select method to gather only immediate family members' names into a new array. # Given
+
+family = {  uncles: ["bob", "joe", "steve"],
+            sisters: ["jane", "jill", "beth"],
+            brothers: ["frank","rob","david"],
+            aunts: ["mary","sally","susan"]
+          }
+ 
+puts family[:sisters][:brothers]
+
+TypeError: can't convert Symbol into Integer
+	from (irb):6:in `[]'
+	from (irb):6
+	from /usr/local/rvm/rubies/ruby-1.9.3-p547/bin/irb:12:in `<main>' irb(main):007:0> 
+ 
+so no straightforward way of achieving this transition without a ruby method:
+
+fam = { uncles: ["Bob", "Joe", "Steve"], sisters: ["jane", "jill", "beth"], brothers: ["frank", "rob", "david"], aunts: ["mary", "sally", "susan"]}
+immfam = fam.select do |k, v|  #built in select method, need to learn by rote
+
+k == :sisters || k == :brothers # defines the immfam set
+end
+arr = immfam.flatten
+
+puts immfam
+puts fam
+
+2 Look at Ruby's merge method. Notice that it has two versions. What is the difference between merge and merge! ? Write a program that uses both and illustrate the differences. 
+
+merge! Mutates the calling hash, rendering it changed, merge without bang leaves the hash renderable unchanged. In irb:
+
+h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+h1.merge(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+h1.merge(h2){|key, oldval, newval| newval - oldval}
+               #=> {"a"=>100, "b"=>54,  "c"=>300}
+h1             #=> {"a"=>100, "b"=>200}
+
+h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+h1.merge!(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+
+h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+h1.merge!(h2) { |key, v1, v2| v1 }
+                #=> {"a"=>100, "b"=>200, "c"=>300}
+
+3 Using some of Ruby's built-in Hash methods, write a program that loops through a hash and prints all of the keys. Write a program that does the same thing except printing the values. Finally, write a program that prints both. 
+
+4 Given the following expression, how would you access the name of the person? 
+
+person = {name: 'Bob', occupation: 'web developer', hobbies: 'painting'}
+ person [:name]
+irb(main):024:0> person = {name: 'Bob', occupation: 'web developer', hobbies: 'painting'}
+=> {:name=>"Bob", :occupation=>"web developer", :hobbies=>"painting"}
+irb(main):025:0> person [:name]
+=> "Bob"
+ 
+5 What method could you use to find out if a Hash contains a specific value in it? Write a program to demonstrate this . 
+
+person = {name: 'Bob', occupation: 'web developer', hobbies: 'painting'}
+if person.has_value?(‘web developer’)
+puts “its here”
+else 
+puts “Try again its not here”
+
+end
+saved in sublime text as hashcheck.rb
+
+From video there is also a has_key? Call which is fed a symbol not a string as per has_value?
+
+6 Given the array... words =  ['demo', 'none', 'tied', 'evil', 'dome', 'mode', 'live', 'fowl', 'veil', 'wolf', 'diet', 'vile', 'edit', 'tide', 'flow', 'neon']
+ 
+Write a program that prints out groups of words that are anagrams.  Your output should look something like this: ["demo", "dome", "mode"] ["neon", "none"] 
+ 
+iterate over the words array, turn it in alphabetical order
+mode => demo
+
+if the key exists, append to the keys list else create a new key with this word in the list, 
+{demo[‘demo’, ‘mode’], [‘tide’, ‘diet’}.sort = k,v sorting with the result moving into a new hash which is formed first as an empty container for the new code to populate:
+result = {}
+
+words.each.do |word|
+key = word.split(‘’).sort.join
+if result.has_key?(key)
+result[key].push(word)
+else
+result[key] = [word]
+end
+end
+
+result.each do |k, v|
+puts “----------”
+p v
+end
+Using split for hash → array
+leon:~ leonhemingway$ irb
+irb(main):001:0> 'mode'.split('')
+=> ["m", "o", "d", "e"]
+irb(main):002:0> 'mode'.split('').sort.join
+=> "demo"
+irb(main):003:0> 	
+
+
+7 Given the following code... 
+ x = "hi there"
+my_hash = {x: "some value"}
+my_hash2 = {x => "some value"}
+ What's the difference between the two hashes that were created?  
+irb(main):001:0> x = "hi there"
+=> "hi there"
+irb(main):002:0> my_hash = {x: "some value"}
+=> {:x=>"some value"}
+irb(main):003:0> x = "hi there"
+=> "hi there"
+irb(main):004:0> my_hash = {x => "some value"}
+=> {"hi there"=>"some value"}
+irb(main):005:0> 
+
+X (hi there) is a string so correct way to add it into the hash is the second way using a string again
+In the first hash x: is a symbol and remains a symbol, it isnt interpreted and does not represent the string. The distinction is important
+
+8 If you see this error, what do you suspect is the most likely problem? 
+
+NoMethodError: undefined method `keys' for Array
+ 
+It looks like the method has been called by an array but there is no keys method for that array 
+
+
+7 complete

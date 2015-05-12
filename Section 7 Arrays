@@ -1,0 +1,123 @@
+7 Data Structure V: Arrays
+Exercises ruby-doc.org
+
+1 Write a program that checks to see if the number appears in this array
+arr = [1, 3, 5, 7, 9, 11]
+number = 3
+rb(main):010:0> arr = [1, 3, 5, 7, 9, 11]
+=> [1, 3, 5, 7, 9, 11]
+irb(main):011:0> arr.include?(3)
+=> true
+2 What will the following programs return? What is value of arr after each? 
+a arr = ["b", "a"]
+   arr = arr.product(Array(1..3))
+   arr.first.delete(arr.first.last)
+b arr = ["b", "a"]
+   arr = arr.product([Array(1..3)])
+   arr.first.delete(arr.first.last)
+
+3 How do you print the word "example" from the following array?
+
+ arr = [["test", "hello", "world"],["example", "mem"]]
+
+irb(main):006:0> arr = [["test", "hello", "world"], ["example", "mem"]]
+=> [["test", "hello", "world"], ["example", "mem"]]
+irb(main):007:0> puts arr.[1][1]
+SyntaxError: (irb):7: syntax error, unexpected '['
+puts arr.[1][1]
+          ^
+	from /usr/local/rvm/rubies/ruby-1.9.3-p547/bin/irb:12:in `<main>'
+irb(main):008:0> puts arr.[1,0]
+SyntaxError: (irb):8: syntax error, unexpected '['puts arr.[1,0]
+          ^
+	from /usr/local/rvm/rubies/ruby-1.9.3-p547/bin/irb:12:in `<main>' irb(main):009:0> arr.flatten
+=> ["test", "hello", "world", "example", "mem"] 
+irb(main):010:0> puts[3]
+
+NoMethodError: undefined method `[]' for nil:NilClass 	from (irb):10
+	from /usr/local/rvm/rubies/ruby-1.9.3-p547/bin/irb:12:in `<main>' irb(main):011:0> puts arr.[3]
+SyntaxError: (irb):11: syntax error, unexpected '['
+puts arr.[3]
+          ^
+	from /usr/local/rvm/rubies/ruby-1.9.3-p547/bin/irb:12:in `<main>' irb(main):012:0> puts arr[3]
+
+=> nil
+irb(main):013:0> print arr
+[["test", "hello", "world"], ["example", "mem"]]=> nil
+irb(main):014:0> arr.flatten!
+=> ["test", "hello", "world", "example", "mem"]
+irb(main):015:0> arr
+=> ["test", "hello", "world", "example", "mem"]
+irb(main):016:0> puts arr[3]
+example
+=> nil
+irb(main):017:0>  This is the first Ruby problem I solved via first principles without help
+
+4 What does each method return in the following example?   arr = [15, 7, 18, 5, 12, 8, 5, 1]
+
+1. arr.index(5) => 3 shows position in arr 0..1..2..3
+
+2. arr.index[5] => err no defined method?
+
+3. arr[5] => 8
+
+  5 What is the value of a, b, and c in the following program? A = e, B = e, C = a 
+
+ string = "Welcome to Tealeaf Academy!"
+A = string[6] returns the appropriate letter in the string order => e
+B = string[11] => e
+C = string[19] => a
+ 
+6 Run the following code, an attempt at exchanging margeret for jody
+
+names = ['bob', 'joe', 'susan', 'margaret']
+names['margaret'] = 'jody'
+ ...get the error message:  TypeError: no implicit conversion of String into Integer from (irb):2:in `[]='  from (irb):2
+  from /Users/username/.rvm/rubies/ruby-2.0.0-p353/bin/irb:12:in `<main>'
+
+irb(main):010:0> names = ['bob', 'joe', 'susan', 'margeret']
+=> ["bob", "joe", "susan", "margeret"]
+irb(main):011:0> names['margeret'] = 'jody'
+TypeError: can't convert String into Integer
+	from (irb):11:in `[]='
+	from (irb):11
+	from /usr/local/rvm/rubies/ruby-1.9.3-p547/bin/irb:12:in `<main>'
+
+ What is the problem and how can it be fixed?
+
+Arrays are indexed by number, thus use names[3] = ‘jody’
+irb(main):012:0> names[3] = 'jody'
+=> "jody"
+irb(main):013:0> names
+=> ["bob", "joe", "susan", "jody"]
+irb(main):014:0> 
+
+Ruby is interpreting this as ‘margeret’ being different from the indexing in the array and comparing string (margeret) to integer (index).  I experienced the flip of this before in one of the previous exercises, where the problem is that the .to_i method is required to translate a string into an integer for a hash problem (FIND IT)
+ 
+7 Write a program that iterates over an array and builds a new array that is the result of incrementing each value in the original array by a value of 2. You should have two arrays (original and new arrays) you've created at the end of this program. Print both arrays to the screen using the p method instead of puts.
+
+orig_array = [1, 2, 3, 4, 5]
+array_new = []
+orig_array.each do |n|  #iterating with each
+  array_new << n + 2 #using each to add 2
+end
+p orig_array
+p array_new
+
+irb(main):017:0> orig_array = [1, 2, 3, 4, 5]
+=> [1, 2, 3, 4, 5]
+irb(main):018:0> array_new = []
+=> []
+irb(main):019:0> orig_array.each do |n|
+irb(main):020:1*   array_new << n + 2
+irb(main):021:1> end
+=> [1, 2, 3, 4, 5]
+irb(main):022:0> p orig_array
+[1, 2, 3, 4, 5]
+=> [1, 2, 3, 4, 5]
+irb(main):023:0> p array_new
+[3, 4, 5, 6, 7]
+=> [3, 4, 5, 6, 7]
+irb(main):024:0> 
+
+7complete

@@ -1,0 +1,191 @@
+
+5.Data Structure III: Flow Control
+
+Exercises
+1 Write down whether the following expressions return true or false. Then type the expressions into irb to see the results. 
+1. (32 * 4) >= 129 → false
+2. false != !true → false
+3. true == 4 → false
+4. false == (847 == '874') → true
+5. (!true || (!(100 / 5) == 20) || ((328 / 4) == 82)) || false ????
+ 
+2 Write a method that takes a string as argument. The method should return the all-caps version of the string, only if the string is longer than 10 characters. Example: change "hi there" to "HI THERE". (Hint: Ruby's String class has a few methods that would be helpful. Check Ruby Docs!) 
+puts "enter your word"
+string = gets.chomp
+def caps(string)
+
+ if string.length >10
+  puts string.upcase
+ else
+ puts string
+ end
+
+end
+def caps(string)
+  if string.length >10
+   string.upcase
+  else
+   string
+  end
+ end
+
+ puts caps("smart")
+ puts caps("thwart")
+ puts caps ("sharper")
+ puts caps ("germanium")
+ puts caps ("vanadatesalts!!!")
+Def name (string as an argument)
+ method conditions in body
+
+
+end
+leon:desktop leonhemingway$ ruby scream.rb
+smart
+thwart
+sharper
+germanium
+VANADATESALTS!!!
+leon:desktop leonhemingway$ 
+
+ 
+3 Write a program that takes a number from the user between 0 and 100 and reports back whether the number is between 0 and 50, 50 and 100, or above 100. 
+puts "Please enter a number between 0 and 100."
+number = gets.chomp.to_i
+
+if number < 0
+  puts "You can't enter a negative number!"
+elsif number <= 50
+  puts "#{number} is between 0 and 50"
+elsif number <= 100
+  puts "#{number} is between 51 and 100"
+else
+  puts "#{number} is above 100"
+end
+ 
+4 What will each block of code below print to the screen? Write your answer on a piece of paper or in a text editor and then run each block of code to see if you were correct. 
+
+1. '4' == 4 ? puts("TRUE") : puts("FALSE")
+irb(main):001:0> '4' == 4 ? puts("TRUE") : puts("FALSE")
+FALSE
+
+2. x = 2
+   if ((x * 3) / 2) == (4 + 4 - x - 3)
+     puts "Did you get it right?"
+   else
+     puts "Did you?"
+   end
+irb(main):002:0> x = 2
+=> 2
+irb(main):003:0> if (( x  * 3) / 2) == (4 + 4- x -3)
+irb(main):004:1> puts "did u get it right?"
+irb(main):005:1> else puts "did you?"
+irb(main):006:1> end
+did u get it right?
+=> nil
+irb(main):007:0> 
+
+3. y = 9
+   x = 10
+   if (x + 1) <= (y)
+     puts "Alright."
+   elsif (x + 1) >= (y)
+     puts "Alright now!"
+   elsif (y + 1) == x
+     puts "ALRIGHT NOW!"
+   else
+     puts "Alrighty!"
+   end
+  irb(main):007:0> y = 9
+=> 9
+irb(main):008:0> x = 10
+=> 10
+irb(main):009:0> if (x + 1) <= (y)
+irb(main):010:1> puts "alright"
+irb(main):011:1> elsif (x + 1) >= (y)
+irb(main):012:1> puts "alright now!"
+irb(main):013:1> elsif (y + 1) == x
+irb(main):014:1> puts "alright now!"
+irb(main):015:1> else 
+irb(main):016:1* puts "alrighty!"
+irb(main):017:1> end
+alright now!
+=> nil
+irb(main):018:0> 
+
+5 Rewrite your program from exercise 3 using a case statement. Wrap each statement in a method and make sure they both still work. 
+Using case
+
+def method name(conds)
+case
+when num<condition>
+execute code
+when <condition>
+execute code
+else
+
+end
+end
+def eval_int(num)  #Wrap in method
+if number < 0
+  puts "You can't enter a negative number!"
+elsif number <= 50
+  puts "#{number} is between 0 and 50"
+elsif number <= 100
+  puts "#{number} is between 51 and 100"
+else
+  puts "#{number} is above 100"
+end
+end #Wrap in method
+puts "Please enter a number between 0 and 100." #test with puts and gets
+number = gets.chomp.to_i  #save product of puts into the variable called number using gets and .to_i to be passed into the method using 
+
+eval_int(number) #method call
+Using case for the codeset 
+
+def evaluate_num(num)
+  case
+  when num < 0
+    puts "You can't enter a negative num!"
+  when num <= 50
+    puts "#{num} is between 0 and 50"
+  when num <= 100
+    puts "#{num} is between 51 and 100"
+  else
+    puts "#{num} is above 100"
+  end
+end
+evaluate_num(number)
+
+
+
+6 When you run the following code...     
+def equal_to_four(x)
+      if x == 4
+        puts "yup"
+      else
+        puts "nope"
+    end
+
+    equal_to_four(5)
+ 
+You get error message.. test_code.rb:96: syntax error, unexpected end-of-input, expecting keyword_end
+
+There is only one end in the method and it needs two to interprete and execute both  method and the conditional code within it, computer is saying it needs the extra end so the method is closed when it is called on by equal_to_four(5)
+
+def equal_to_four(x)
+ if x == 4
+        puts "yup"
+      else
+        puts "nope"
+    end
+    end
+    equal_to_four(5)
+equalto.rb:6: syntax error, unexpected keyword_end, expecting $end
+leon:desktop leonhemingway$ ruby equalto.rb
+equalto.rb:8: syntax error, unexpected $end, expecting keyword_end
+    equal_to_four(5)
+                    ^
+add end leon:desktop leonhemingway$ ruby equalto.rb
+nope
+
+5 complete

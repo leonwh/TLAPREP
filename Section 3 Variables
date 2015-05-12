@@ -1,0 +1,135 @@
+3. Data Structure I: Variables
+Exercises
+1 Write a program name.rb that asks the user to type in their name and then prints out a greeting message with their name included. 
+
+Solution  = name.rb 
+puts "What is your name?"
+name = gets.chomp
+puts "Hello " + name
+run in term not irb, and it works fine
+ 
+2 Write a program called age.rb that asks a user how old they are and then tells them how old they will be in 10, 20, 30 and 40 years. Below is the output for someone 20 years old. # output of age.rb for someone 20 yrs old
+
+How old are you?
+In 10 years you will be:
+30
+In 20 years you will be:
+40
+In 30 years you will be:
+50
+In 40 years you will be:
+60
+ 
+attempt at string interpolation
+puts "What is your age?"
+age = gets.chomp
+puts "in ten years you will be " "#{10 + age}"
+puts "in twenty years you will be " "#{20 + age}"
+puts "in thirty years you will be " #{30 + age}"
+puts "in forty years you will be " #{40 + age}"
+in term not irb ruby run age.rb led to output asking for age then once age has been entered
+age.rb:3:in `+': String can't be coerced into Fixnum (TypeError)
+	from age.rb:3:in `<main>'
+Second Attempt 
+puts "What is your age?"
+age = gets.chomp
+puts "#{in ten years you will be }" "#{10 + age}"
+puts "#{in twenty years you will be}" "#{20 + age}"
+puts "#{in thirty years you will be}" "#{30 + age}"
+puts "#{in forty years you will be}" "#{40 + age}"
+I was trying to tie the strings together but it wouldnt work as they would form integer-string mixes
+
+
+SO, convert string to integer using the to_i method call on the variable as it is entered
+puts "What is your age?"
+age = gets.chomp.to_i
+puts "In 10 years you will be:"
+puts age + 10
+puts "In 20 years you will be:"
+puts age + 20
+puts "In 30 years you will be:"
+puts age + 30
+puts "In 40 years you will be:"
+puts age + 40
+  
+3 Add a section onto name.rb that prints the name of the user 10 times. You must do this without explicitly writing the puts method 10 times in a row. Hint: you can use the times method to do something repeatedly. 
+puts "What is your name?"
+name = gets.chomp
+10.times do "Hello " + name”
+=> What is your name?
+leon
+Hello leon
+name.rb:3:in `times': wrong number of arguments(1 for 0) (ArgumentError)
+	from name.rb:3:in `<main>'
+wrong syntax no puts
+
+Attempt 2
+puts "What is your name?"
+name = gets.chomp
+10.times do 
+puts name
+I did not put an end onto the do method, thus it wouldnt work, 
+
+puts "What is your name?"
+name = gets.chomp
+10.times do 
+puts name
+end
+
+4 Modify name.rb again so that it first asks the user for their first name, saves it into a variable, and then does the same for the last name. Then outputs their full name all at once.  
+Define variables then catenate:
+puts "What is your first name?"
+fname = gets.chomp
+
+puts "What is your last name?"
+lname = gets.chomp
+
+puts "#{fname} #{lname}"
+
+TLA Solution  
+puts "What is your first name?"
+first_name = gets.chomp
+puts "Thank you. What is your last name?"
+last_name = gets.chomp
+puts "Great. So your full name is " + first_name + " " + last_name
+My fun stuff:
+puts "what is your name?"
+first_name = gets.chomp
+puts "now enter your surname"
+last_name = gets.chomp
+puts " hello #{first_name} #{last_name}"
+
+puts "how old are you?"
+age = gets.chomp.to_i
+puts "in 100 years you will be:"
+puts age + 100
+
+10.times do puts age
+end
+
+5 Testing knowledge of variable scope - Look at the following programs... What does x print to the screen in each case? Do they both give errors? Are the errors different? Why?  
+
+x = 0 initialise variable before do/end and implement do/end block
+3.times do
+  x += 1
+end
+puts x
+
+Prints 3 to the screen. => 3 
+ 
+and... The second throws an error 
+
+y = 0
+3.times do
+  y+= 1
+  x = y initialise variable here within block so x cannot be reached – like a layer around the code which is the block
+end
+puts x yplus.rb:6:in `<main>': undefined local variable or method `x' for main:Object (NameError)
+   
+undefined local variable or method because x is not available as it is created within the scope of the do/end block. If I alter the last line to puts y, it returns 3 again, I did not expect that but it must be because y is mentioned in the first line and defined within the do/end block
+
+6 What does the following error message tell you?   NameError: undefined local variable or method `shoes' for main:Object  from (irb):3 from /usr/local/rvm/rubies/ruby-2.0.0-rc2/bin/irb:16:in `<main>'
+
+Failed to reference a variable / method due to inadequate definitiion, or is out of the scope in which it is being called. Read more on scope
+ 
+3 COMPLETE
