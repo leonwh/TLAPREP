@@ -1,0 +1,6 @@
+7. What's the major difference between an Array and a Hash? 
+
+
+An array can contain any mixture of figures strings numbers booleans, even arrays (arrays are referenced by index). 
+
+A hash can contain only key value pairs (hashes are referenced by key)

@@ -1,0 +1,22 @@
+leon:desktop leonhemingway$ irb
+irb(main):001:0> (32 * 4) >= 129
+=> false
+irb(main):002:0> false != true
+=> true
+irb(main):003:0> false != !true
+=> false
+irb(main):004:0> false == (847 == '874')
+=> true
+irb(main):005:0> '874' == 874
+=> false
+irb(main):006:0> four == 'four'
+NameError: undefined local variable or method `four' for main:Object
+	from (irb):6
+	from /usr/local/rvm/rubies/ruby-1.9.3-p547/bin/irb:12:in `<main>'
+irb(main):007:0> 
+irb(main):008:0* fales == (847 == '874')
+
+irb(main):001:0> (!true || (!(100 / 5) == 20) || ((328 / 4) == 82)) || false
+=> true
+irb(main):002:0> (!true || (!(100 / 5) == 20) || ((328 / 4) == 82)) 
+=> true
